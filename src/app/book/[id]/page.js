@@ -15,6 +15,9 @@ async function fetchBibleVerse(book) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
+    console.log("here");
+    console.log(data);
+    console.log("here2");
     return data;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -23,17 +26,32 @@ async function fetchBibleVerse(book) {
 }
 
 export default async function Page({ params: { id } }) {
-  const data = await fetchBibleVerse(id);
-  console.log(data);
+  const book = await fetchBibleVerse(id);
+
+  const title = id.charAt(0).toUpperCase() + id.slice(1);
+
+  console.log(book.data);
   return (
-    <div className="p-4">
-      <div className="text-center text-5xl p-2 pb-4">{id}</div>
-      {data.verses.map((item, index) => (
-        <div className="flex m-auto max-w-[35rem]">
-          <span className="">{index + 1}</span>
-          <span className="px-1 ">{item}</span>
-        </div>
-      ))}
+    <div className="flex justify-center pt-6 flex-col">
+      <div className="text-3xl mx-auto">{"Book of " + title}</div>
+      <div className="">
+        {book.data.map((item, index) => (
+          <div className="">
+            <div className="text-xl pt-3 text-center">
+              {"Chapter "}
+              {index + 1}
+            </div>
+            <div className="">
+              {item.map((item, index) => (
+                <div className="flex pt-2 px-12">
+                  <div className=""> {index + 1}</div>
+                  <div className="pl-1">{item}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
