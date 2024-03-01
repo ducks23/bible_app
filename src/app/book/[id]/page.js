@@ -9,18 +9,15 @@ async function fetchBibleVerse(book) {
   try {
     const response = await fetch(baseUrl, {
       method: "POST",
-      next: {
-        revalidate: 10,
-      },
+      // next: {
+      //   revalidate: 10,
+      // },
       body: jsonData, // Attach the serialized data
     });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log("here");
-    console.log(data);
-    console.log("here2");
     return data;
   } catch (error) {
     console.error("Error fetching data:", error);
