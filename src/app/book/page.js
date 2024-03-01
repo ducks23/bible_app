@@ -74,15 +74,16 @@ const booksOfTheBible = [
 
 const BooksPage = () => {
   return (
-    <div>
-      <h1>Books of the Bible</h1>
-      <ul>
-        {booksOfTheBible.map((book) => (
-          <li key={book.id}>
-            <Link href={`/book/${book.id}`}>{book.name}</Link>
-          </li>
-        ))}
-      </ul>
+    <div className="flex bg-blue-300 justify-center">
+      <div>
+        <ul>
+          {booksOfTheBible.map((book) => (
+            <li key={book.id}>
+              <Link href={`/book/${book.id}`}>{book.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

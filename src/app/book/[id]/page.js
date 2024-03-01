@@ -32,7 +32,7 @@ export default async function Page({ params: { id } }) {
 
   console.log(book.data);
   return (
-    <div className="flex justify-center px-12 pt-6 flex-col bg-sky-300">
+    <div className="flex justify-center px-12 pt-6 flex-col bg-blue-300">
       <div className=" bg-[#fff5de] p-4 rounded-lg">
         <div className="text-3xl text-center  font-bold text-gray-500  underline mx-auto">
           {"Book of " + title}

@@ -1,5 +1,7 @@
 import { GlowingStarsBackgroundCard } from "@/components/ui/glowing-stars";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+
+import BooksPage from "./book/page";
 import {
   TextRevealCard,
   TextRevealCardDescription,
@@ -10,7 +12,7 @@ export default function Home() {
   const words = "Holy Bible";
 
   return (
-    <div className="p-3 bg-blue-300 h-screen">
+    <div className=" bg-blue-300 ">
       <div className=""></div>
       {/* <GlowingStarsBackgroundCard /> */}
       <div className="font-body font-bold text-xl  text-center p-5 ">
@@ -19,7 +21,7 @@ export default function Home() {
           words={words}
         />
       </div>
-      <div>{}</div>
+      <BooksPage />
 
       <div className="flex justify-center items-center">
         {/* <TextRevealCard */}
