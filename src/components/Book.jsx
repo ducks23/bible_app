@@ -3,7 +3,7 @@ const BiblePage = ({ id, book }) => {
   return (
     <div className="flex justify-center bg-sky-50 h-fit  flex-col">
       <div className="  p-1 h-fit">
-        <div className="text-3xl text-center  font-bold text-gray-500  underline mx-auto">
+        <div className="text-3xl text-center  font-bold text-red-700  underline mx-auto">
           {"Book of " + title}
         </div>
         {book.data.map((item, index) => (
