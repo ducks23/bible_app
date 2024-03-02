@@ -15,7 +15,7 @@ const booksOfTheBible = [
   { id: "2kings", name: "2 KG" },
   { id: "1chronicles", name: "1 CH" },
   { id: "2chronicles", name: "2 CH" },
-  { id: "ezra", name: "Ezra" },
+  { id: "ezra", name: "EZRA" },
   { id: "nehemiah", name: "NEH" },
   { id: "esther", name: "ESTH" },
   { id: "job", name: "JOB" },
