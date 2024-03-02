@@ -28,12 +28,12 @@ async function fetchBibleBook(book) {
   }
 }
 export default async function Home() {
-  const data = await fetchBibleBook("Genesis");
+  const data = await fetchBibleBook("genesis");
   console.log(data);
   return (
     <div className="bg-sky-50">
       {" "}
-      <BiblePage chapter_id={"3john"} data={data} />
+      <BiblePage chapter_id={"genesis"} data={data} />
       <MainBible />
     </div>
   );
