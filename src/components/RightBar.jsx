@@ -24,7 +24,7 @@ const booksOfTheBible = [
   { id: "ecclesiastes", name: "ECC" },
   { id: "songofsolomon", name: "SONG" },
   { id: "isaiah", name: "ISA" },
-  { id: "jeremiah", name: "Jeremiah" },
+  { id: "jeremiah", name: "JER" },
   { id: "lamentations", name: "LAM" },
   { id: "ezekiel", name: "EZEK" },
   { id: "daniel", name: "DAN" },
@@ -73,11 +73,13 @@ const booksOfTheBible = [
 
 export default function RightBar() {
   return (
-    <div className="flex bg-blue-300 pt-10 flex-col h-auto ">
+    <div className="flex pt-10 flex-col h-auto ">
       {booksOfTheBible.map((book) => (
-        <div className=" py-1 pr-1 pl-2 ">
+        <div className=" py-1 pl-2 ">
           <Link className="truncate" href={`/book/${book.id}`}>
-            {book.name}
+            <button class="bg-blue-500 hover:bg-blue-400 text-white min-w-16 font-bold py-2 border-blue-700 hover:border-blue-500 rounded">
+              {book.name}
+            </button>
           </Link>
         </div>
       ))}

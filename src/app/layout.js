@@ -6,7 +6,7 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body>
-        <div className="">
+        <div className="bg-sky-50">
           <div className="flex">
             {/* <LeftBar /> */}
             {children}
