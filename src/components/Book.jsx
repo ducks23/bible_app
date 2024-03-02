@@ -8,7 +8,7 @@ const BiblePage = ({ id, book }) => {
         </div>
         {book.data.map((item, index) => (
           <div className="">
-            <div className="text-xl  text-center font-bold text-indigo-700">
+            <div className="text-xl  text-center font-bold pt-3 text-indigo-700">
               {"Chapter "}
               {index + 1}
             </div>
