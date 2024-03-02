@@ -28,10 +28,10 @@ async function fetchBibleBook(book) {
   }
 }
 export default async function Home() {
-  const data = await fetchBibleBook("3john");
+  const data = await fetchBibleBook("Genesis");
   console.log(data);
   return (
-    <div className="bg-red-50">
+    <div className="bg-sky-50">
       {" "}
       <BiblePage chapter_id={"3john"} data={data} />
       <MainBible />
