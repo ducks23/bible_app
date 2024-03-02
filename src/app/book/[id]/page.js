@@ -1,3 +1,5 @@
+import { BiblePage } from "@/components/Book";
+
 async function fetchBibleVerse(book) {
   const baseUrl = "https://django-bible.vercel.app/book";
   const data = {
@@ -30,30 +32,9 @@ export default async function Page({ params: { id } }) {
 
   const title = id.charAt(0).toUpperCase() + id.slice(1);
 
-  console.log(book.data);
   return (
-    <div className="flex justify-center px-12 pt-6 flex-col bg-blue-300">
-      <div className=" bg-[#fff5de] p-4 rounded-lg">
-        <div className="text-3xl text-center  font-bold text-gray-500  underline mx-auto">
-          {"Book of " + title}
-        </div>
-        {book.data.map((item, index) => (
-          <div className="">
-            <div className="text-xl pt-3 text-center font-bold text-red-400">
-              {"Chapter "}
-              {index + 1}
-            </div>
-            <div className="">
-              {item.map((item, index) => (
-                <div className="flex text-gray-600 pt-2 px-10 text-lg">
-                  <div className=""> {index + 1}</div>
-                  <div className="pl-1">{item}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+    <div>
+      <BiblePage id={title} book={book} />
     </div>
   );
 }
