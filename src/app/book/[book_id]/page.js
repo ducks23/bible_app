@@ -1,7 +1,6 @@
-import MainBible from "@/sections/main";
 import { BiblePage } from "@/components/Book";
 
-async function fetchBibleBook(book) {
+async function fetchBibleVerse(book) {
   const baseUrl = "https://django-bible.vercel.app/book";
   const data = {
     book_name: book,
@@ -27,14 +26,13 @@ async function fetchBibleBook(book) {
     throw error; // Rethrowing the error for the caller to handle
   }
 }
-export default async function Home() {
-  const data = await fetchBibleBook("3john");
-  console.log(data);
+
+export default async function Page({ params: { book_id } }) {
+  const data = await fetchBibleVerse(book_id);
+
   return (
-    <div className="bg-red-50">
-      {" "}
-      <BiblePage chapter_id={"3john"} data={data} />
-      <MainBible />
+    <div>
+      <BiblePage chapter_id={book_id} data={data} />
     </div>
   );
 }
