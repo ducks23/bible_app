@@ -5,7 +5,7 @@ import { fetchBibleData } from "@/utils/api";
 
 export default async function Home() {
   const bible_name = "genesis";
-  const data = await fetchBibleData(bible_name);
+  const data = await fetchBibleData("book", bible_name);
   return (
     <div className="bg-sky-50">
       {" "}
