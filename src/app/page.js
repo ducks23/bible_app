@@ -12,9 +12,9 @@ async function fetchBibleBook(book) {
   try {
     const response = await fetch(baseUrl, {
       method: "POST",
-      // next: {
-      //   revalidate: 10,
-      // },
+      next: {
+        revalidate: 10,
+      },
       body: jsonData, // Attach the serialized data
     });
     if (!response.ok) {
