@@ -29,6 +29,7 @@ async function fetchBibleVerse(book) {
 
 export default async function Page({ params: { book_id } }) {
   const data = await fetchBibleVerse(book_id);
+  console.log(data);
 
   return (
     <div>
