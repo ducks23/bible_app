@@ -1,16 +1,36 @@
 import "./globals.css";
-import LeftBar from "@/components/LeftBar";
-import RightBar from "@/components/RightBar";
+import { MenubarDemo } from "@/components/MenuBar";
+
+import { Inter as FontSans } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body>
-        <div className="bg-sky-50">
-          <div className="flex">
-            {/* <LeftBar /> */}
-            {children}
-            <RightBar />
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+        )}
+      >
+        <div className="">
+          <div className="">
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <MenubarDemo />
+              {/* <LeftBar /> */}
+              {children}{" "}
+            </ThemeProvider>
           </div>
         </div>
       </body>
