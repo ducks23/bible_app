@@ -108,7 +108,7 @@ const BiblePage = ({
     return list;
   }
 
-  const [value, setValue] = useState("genesis");
+  const [value, setValue] = useState("Book");
 
   console.log(value);
 
