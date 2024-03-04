@@ -49,10 +49,17 @@ const BiblePage = ({
     return list;
   }
   let num_chapters = generateList(size);
+  num_chapters.unshift("Chapter");
 
   const redirectToAnotherPage = () => {
     if (value != "Book" && chapter != "Chapter" && verse != "Verse") {
       router.push(`/book/${value}/chapter/${chapter}/verse/${verse}`);
+    }
+    if (value != "Book" && chapter != "Chapter" && verse == "Verse") {
+      router.push(`/book/${value}/chapter/${chapter}`);
+    }
+    if (value != "Book" && chapter == "Chapter" && verse == "Verse") {
+      router.push(`/book/${value}`);
     }
   };
   let title;
@@ -70,6 +77,7 @@ const BiblePage = ({
   if (chapter != "Chapter") {
     let verse_nums = verse_counts[value.toString()][chapter.toString()];
     verses_list = generateList(parseInt(verse_nums));
+    verses_list.unshift("Verse");
   }
 
   return (
