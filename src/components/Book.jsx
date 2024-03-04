@@ -1,4 +1,6 @@
 "use client";
+import { useRouter } from "next/navigation";
+
 import {
   Select,
   SelectContent,
@@ -8,6 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
 
 const booksOfTheBible = [
   // Old Testament
@@ -156,6 +160,25 @@ const BiblePage = ({
   chapter_number,
   is_chapter = false,
 }) => {
+  const router = useRouter();
+
+  const [value, setValue] = useState("Book");
+  const [chapter, setChapter] = useState("Chapter");
+  console.log(value);
+
+  let size = bibleBooksChapters[value];
+  function generateList(size) {
+    let list = ["Chapter"];
+    for (let i = 1; i <= size; i++) {
+      list.push(i);
+    }
+    return list;
+  }
+  let num_chapters = generateList(size);
+
+  const redirectToAnotherPage = () => {
+    router.push(`/book/${value}/chapter/${chapter}`);
+  };
   let title;
   if (!isNaN(parseInt(chapter_id.charAt(0)))) {
     title =
@@ -166,24 +189,12 @@ const BiblePage = ({
   } else {
     title = chapter_id.charAt(0).toUpperCase() + chapter_id.slice(1);
   }
-
-  const [value, setValue] = useState("Book");
-
-  function generateNumbers(book) {
-    let numbers = [];
-    let size = bibleBooksChapters.book;
-    for (let i = 1; i <= size; i++) {
-      numbers.push(i);
-    }
-    return numbers;
-  }
-
   console.log(value);
+  console.log(chapter);
 
-  console.log(title, "title");
   return (
     <div className="flex justify-center bg-background h-fit flex-col">
-      <div className="flex justify-center p-2">
+      <div className="flex justify-center flex-wrap p-2">
         <div className="p-1">
           <Select
             type="single"
@@ -206,13 +217,22 @@ const BiblePage = ({
           </Select>
         </div>
         <div className="p-1">
-          <Select>
+          <Select
+            type="single"
+            value={chapter}
+            defaultValue={"Chapter"}
+            onValueChange={(value) => {
+              setChapter(value);
+            }}
+          >
             <SelectTrigger className="w-[100px]">
               <SelectValue placeholder="Chapter" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="apple">Matthew</SelectItem>
+                {num_chapters.map((item, index) => (
+                  <SelectItem value={item}>{item}</SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -231,6 +251,11 @@ const BiblePage = ({
               </SelectGroup>
             </SelectContent>
           </Select>
+        </div>
+        <div className="p-1">
+          <Button variant="secondary" onClick={redirectToAnotherPage}>
+            search
+          </Button>
         </div>
       </div>
       <div className="h-fit">
