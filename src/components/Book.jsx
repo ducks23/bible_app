@@ -161,9 +161,14 @@ const BiblePage = ({
   is_chapter = false,
 }) => {
   const router = useRouter();
-
-  const [value, setValue] = useState("Book");
-  const [chapter, setChapter] = useState("Chapter");
+  if (chapter_id == null) {
+    chapter_id = "Book";
+  }
+  if (chapter_number == null) {
+    chapter_number = "Chapter";
+  }
+  const [value, setValue] = useState(chapter_id);
+  const [chapter, setChapter] = useState(chapter_number);
   console.log(value);
 
   let size = bibleBooksChapters[value];
@@ -220,13 +225,13 @@ const BiblePage = ({
           <Select
             type="single"
             value={chapter}
-            defaultValue={"Chapter"}
+            defaultValue={chapter}
             onValueChange={(value) => {
               setChapter(value);
             }}
           >
             <SelectTrigger className="w-[100px]">
-              <SelectValue placeholder="Chapter" />
+              <SelectValue placeholder="Chapter"> {chapter} </SelectValue>
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
