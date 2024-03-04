@@ -73,7 +73,7 @@ const BiblePage = ({
     title = chapter_id.charAt(0).toUpperCase() + chapter_id.slice(1);
   }
 
-  let verses_list = ["Verses"];
+  let verses_list = ["Verse"];
   if (chapter != "Chapter") {
     let verse_nums = verse_counts[value.toString()][chapter.toString()];
     verses_list = generateList(parseInt(verse_nums));
