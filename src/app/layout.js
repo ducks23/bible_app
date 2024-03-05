@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import { MenubarDemo } from "@/components/MenuBar";
 
 import { Inter as FontSans } from "next/font/google";
