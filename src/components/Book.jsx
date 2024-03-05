@@ -25,7 +25,9 @@ const BiblePage = ({
   chapter_number,
   verse_number,
   is_chapter = false,
+  is_verse = false,
 }) => {
+  const verse_num_text = verse_number;
   const router = useRouter();
   if (chapter_id == null) {
     chapter_id = "Book";
@@ -153,25 +155,26 @@ const BiblePage = ({
         </div>
       </div>
       <div className="h-fit">
-        <div className="text-2xl text-center mx-auto">{"Book of " + title}</div>
+        <div className="text-2xl text-center mx-auto">{title}</div>
         {data.data.map((item, index) => (
           <div className=" flex justify-center">
             <div>
               {is_chapter ? (
                 <div className="text-xl text-center pt-2 ">
-                  {"Chapter "}
                   {chapter_number}
                 </div>
               ) : (
-                <div className="text-xl  text-center pt-2 ">
-                  {"Chapter "}
-                  {index + 1}
-                </div>
+                <div className="text-xl  text-center pt-2 ">{index + 1}</div>
               )}
               <div className=" max-w-xl px-2">
                 {item.map((item, index) => (
                   <div className="flex pt-2  text-lg">
-                    <div className="pl-4 "> {index + 1 + "."}</div>
+                    {is_verse ? (
+                      <div className="pl-4 "> {verse_num_text + "."}</div>
+                    ) : (
+                      <div className="pl-4 "> {index + 1 + "."}</div>
+                    )}
+
                     <div className="pl-1 pr-4 ">{item}</div>
                   </div>
                 ))}

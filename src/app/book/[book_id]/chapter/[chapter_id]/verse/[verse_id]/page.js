@@ -13,6 +13,7 @@ export default async function Page({
         verse_number={verse_id}
         data={data}
         is_chapter={true}
+        is_verse={true}
       />
     </div>
   );
