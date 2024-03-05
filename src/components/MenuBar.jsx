@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { faCross } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,9 +20,11 @@ export function MenubarDemo() {
   return (
     <div>
       <div className="flex max-w-3xl mx-auto justify-between px-10 dark:bg-background pt-3">
-        <div className="my-auto">
-          <FontAwesomeIcon icon={faCross} />
-        </div>
+        <Link href={"/"}>
+          <div className="my-auto">
+            <FontAwesomeIcon icon={faCross} />
+          </div>
+        </Link>
         <div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
