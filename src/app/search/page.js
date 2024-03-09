@@ -25,8 +25,9 @@ export default function Page() {
     fetch("https://cozybible.com/api/aws", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ search_term: formData.text }),
     })
