@@ -22,7 +22,7 @@ export default function Page() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/aws", {
+    fetch("https://cozybible.com/api/aws", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
