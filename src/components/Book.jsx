@@ -150,7 +150,7 @@ const BiblePage = ({
         </div>
         <div className="p-1">
           <Button variant="secondary" onClick={redirectToAnotherPage}>
-            search
+            Go
           </Button>
         </div>
       </div>
