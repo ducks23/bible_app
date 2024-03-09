@@ -26,6 +26,7 @@ export default function Page() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({ search_term: formData.text }),
     })
