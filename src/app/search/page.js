@@ -3,8 +3,6 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-export async function getSearchResults(payload) {}
-
 export default function Page() {
   const [formData, setFormData] = useState({
     // Initialize formData object with empty values for input fields
@@ -22,7 +20,7 @@ export default function Page() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://cozybible.com/api/aws", {
+    fetch("api/aws", {
       method: "POST",
       headers: {
         Accept: "application/json",
