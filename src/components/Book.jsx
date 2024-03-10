@@ -100,7 +100,9 @@ const BiblePage = ({
             <SelectContent>
               <SelectGroup>
                 {booksOfTheBible.map((item, index) => (
-                  <SelectItem value={item.id}>{item.name}</SelectItem>
+                  <SelectItem key={index} value={item.id}>
+                    {item.name}
+                  </SelectItem>
                 ))}
               </SelectGroup>
             </SelectContent>
@@ -121,7 +123,9 @@ const BiblePage = ({
             <SelectContent>
               <SelectGroup>
                 {num_chapters.map((item, index) => (
-                  <SelectItem value={item}>{item}</SelectItem>
+                  <SelectItem key={index} value={item}>
+                    {item}
+                  </SelectItem>
                 ))}
               </SelectGroup>
             </SelectContent>
@@ -142,7 +146,9 @@ const BiblePage = ({
             <SelectContent>
               <SelectGroup>
                 {verses_list.map((item, index) => (
-                  <SelectItem value={item}>{item}</SelectItem>
+                  <SelectItem key={index} value={item}>
+                    {item}
+                  </SelectItem>
                 ))}
               </SelectGroup>
             </SelectContent>
@@ -157,7 +163,7 @@ const BiblePage = ({
       <div className="h-fit">
         <div className="text-2xl text-center mx-auto">{title}</div>
         {data.data.map((item, index) => (
-          <div className=" flex justify-center">
+          <div key={index} className=" flex justify-center">
             <div>
               {is_chapter ? (
                 <div className="text-xl text-center pt-2 ">
@@ -168,7 +174,7 @@ const BiblePage = ({
               )}
               <div className=" max-w-xl px-2">
                 {item.map((item, index) => (
-                  <div className="flex pt-2  text-lg">
+                  <div key={index} className="flex pt-2  text-lg">
                     {is_verse ? (
                       <div className="pl-4 "> {verse_num_text + "."}</div>
                     ) : (

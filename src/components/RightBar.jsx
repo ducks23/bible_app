@@ -74,8 +74,8 @@ const booksOfTheBible = [
 export default function RightBar() {
   return (
     <div className="flex pt-10 flex-col h-auto ">
-      {booksOfTheBible.map((book) => (
-        <div className=" py-1 pl-2 ">
+      {booksOfTheBible.map((book, index) => (
+        <div key={index} className=" py-1 pl-2 ">
           <Link className="truncate" href={`/book/${book.id}`}>
             <button class="bg-blue-500 hover:bg-blue-400 text-white min-w-16 font-bold py-2 border-blue-700 hover:border-blue-500 rounded">
               {book.name}

@@ -14,7 +14,6 @@ COPY . ${FUNCTION_DIR}
 RUN pip install \
     --target ${FUNCTION_DIR} \
         awslambdaric
-
 # Use a slim version of the base Python image to reduce the final image size
 FROM python:3.12-slim
 

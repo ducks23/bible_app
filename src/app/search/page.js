@@ -64,7 +64,7 @@ export default function Page() {
       </form>
       <div className="max-w-[40rem] px-3 pt-10 mx-auto">
         {data.map((item, index) => (
-          <div className="flex p-2 flex-col">
+          <div key={index} className="flex p-2 flex-col">
             <div className="bg-secondary rounded rounded-lg">
               <div className="p-3 font-bold">{item._id}</div>
               <div className="p-3">{item._source.text}</div>
