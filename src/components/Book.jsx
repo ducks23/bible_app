@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-
+import { MeteorsDemo } from "./MeteorComponent";
 import {
   Select,
   SelectContent,
@@ -200,6 +200,41 @@ const BiblePage = ({
                     <div className="pl-1 pr-4 ">{item}</div>
                   </div>
                 ))}
+              </div>
+              <div className="flex justify-around p-6">
+                {is_verse ? (
+                  <Link
+                    className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
+                    href={`/book/${chapter_id}/chapter/${chapter_number}/verse/${parseInt(verse_number) - 1}`}
+                  >
+                    <div className=""> {"<"} </div>
+                  </Link>
+                ) : (
+                  <Link
+                    className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
+                    href={`/book/${chapter_id}/chapter/${parseInt(chapter_number) - 1}`}
+                  >
+                    <div className=""> {"<"} </div>
+                  </Link>
+                )}
+
+                <div className="w-40"></div>
+
+                {is_verse ? (
+                  <Link
+                    className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
+                    href={`/book/${chapter_id}/chapter/${chapter_number}/verse/${parseInt(verse_number) + 1}`}
+                  >
+                    <div className=""> {">"} </div>
+                  </Link>
+                ) : (
+                  <Link
+                    className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
+                    href={`/book/${chapter_id}/chapter/${parseInt(chapter_number) + 1}`}
+                  >
+                    <div className=""> {">"} </div>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
