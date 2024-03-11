@@ -67,7 +67,7 @@ export default function SearchBar() {
 
       {spinner ? (
         <div className="mx-auto my-auto pt-20">
-          <ClipLoader />
+          <ClipLoader color="#3B81F6" />
         </div>
       ) : (
         <p></p>
