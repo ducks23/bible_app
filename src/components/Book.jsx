@@ -161,7 +161,7 @@ const BiblePage = ({
             <div>
               {is_chapter ? (
                 <div className="text-xl text-center pt-2 ">
-                  {chapter_number}
+                  {"Ch. " + chapter_number}
                 </div>
               ) : (
                 <div className="text-xl  text-center pt-2 ">{index + 1}</div>
