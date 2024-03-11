@@ -19,6 +19,7 @@ import {
 import { fetchBibleData } from "@/utils/api";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 const BiblePage = ({
   chapter_id,
   data,
@@ -168,16 +169,24 @@ const BiblePage = ({
         </div>
       </div>
       <div className="h-fit">
-        <div className="text-2xl text-center mx-auto">{title}</div>
+        <div className="text-2xl text-center mx-auto">
+          <Link href={`/book/${chapter_id}`}>{title}</Link>
+        </div>
         {data.data.map((item, index) => (
           <div className=" flex justify-center">
             <div>
               {is_chapter ? (
                 <div className="text-xl text-center pt-2 ">
-                  {"Ch. " + chapter_number}
+                  <Link href={`/book/${chapter_id}/chapter/${chapter_number}`}>
+                    {"Ch. " + chapter_number}
+                  </Link>
                 </div>
               ) : (
-                <div className="text-xl  text-center pt-2 ">{index + 1}</div>
+                <div className="text-xl  text-center pt-2 ">
+                  <Link href={`/book/${chapter_id}/chapter/${index + 1}`}>
+                    {index + 1}
+                  </Link>
+                </div>
               )}
               <div className=" max-w-xl px-2">
                 {item.map((item, index) => (
