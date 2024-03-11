@@ -10,9 +10,6 @@ export default async function Home() {
   return (
     <div className="">
       <SearchBar />
-      <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        <div className="text-center">Verse of the Day</div>
-      </h2>
       <BiblePage
         chapter_id={bible_name}
         chapter_number={15}
