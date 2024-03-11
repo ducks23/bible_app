@@ -19,7 +19,7 @@ export default function BibleContent({
     title = chapter_id.charAt(0).toUpperCase() + chapter_id.slice(1);
   }
   return (
-    <div className="flex flex-col h-[70vh] justify-between">
+    <div className="flex flex-col h-[60vh] justify-between">
       <div className=" content mb-auto">
         <div className="text-2xl text-center mx-auto">
           <Link href={`/book/${chapter_id}`}>{title}</Link>
@@ -57,40 +57,42 @@ export default function BibleContent({
           </div>
         ))}
       </div>
-      <div className="flex justify-around bottom-0 p-6">
-        {is_verse ? (
-          <Link
-            className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
-            href={`/book/${chapter_id}/chapter/${chapter_number}/verse/${parseInt(verse_number) - 1}`}
-          >
-            <div className=""> {"<"} </div>
-          </Link>
-        ) : (
-          <Link
-            className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
-            href={`/book/${chapter_id}/chapter/${parseInt(chapter_number) - 1}`}
-          >
-            <div className=""> {"<"} </div>
-          </Link>
-        )}
+      <div className=" mx-auto max-w-xl text-center justify-center  bottom-0 p-6">
+        <div className="flex">
+          {is_verse ? (
+            <Link
+              className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
+              href={`/book/${chapter_id}/chapter/${chapter_number}/verse/${parseInt(verse_number) - 1}`}
+            >
+              <div className=""> {"<"} </div>
+            </Link>
+          ) : (
+            <Link
+              className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
+              href={`/book/${chapter_id}/chapter/${parseInt(chapter_number) - 1}`}
+            >
+              <div className=""> {"<"} </div>
+            </Link>
+          )}
 
-        <div className="w-40"></div>
+          <div className="w-40"></div>
 
-        {is_verse ? (
-          <Link
-            className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
-            href={`/book/${chapter_id}/chapter/${chapter_number}/verse/${parseInt(verse_number) + 1}`}
-          >
-            <div className=""> {">"} </div>
-          </Link>
-        ) : (
-          <Link
-            className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
-            href={`/book/${chapter_id}/chapter/${parseInt(chapter_number) + 1}`}
-          >
-            <div className=""> {">"} </div>
-          </Link>
-        )}
+          {is_verse ? (
+            <Link
+              className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
+              href={`/book/${chapter_id}/chapter/${chapter_number}/verse/${parseInt(verse_number) + 1}`}
+            >
+              <div className=""> {">"} </div>
+            </Link>
+          ) : (
+            <Link
+              className=" my-auto bg-secondary rounded-lg flex items-center justify-center text-center w-full h-10"
+              href={`/book/${chapter_id}/chapter/${parseInt(chapter_number) + 1}`}
+            >
+              <div className=""> {">"} </div>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
