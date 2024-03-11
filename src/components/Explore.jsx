@@ -70,6 +70,8 @@ export default function Explore({ chapter_id, chapter_number, verse_number }) {
             defaultValue={"Book"}
             onValueChange={(value) => {
               setValue(value);
+              setChapter("Chapter");
+              setVerse("Verse");
             }}
           >
             <SelectTrigger className="w-[100px]">
@@ -91,6 +93,7 @@ export default function Explore({ chapter_id, chapter_number, verse_number }) {
             defaultValue={chapter}
             onValueChange={(value) => {
               setChapter(value);
+              setVerse("Verse");
             }}
           >
             <SelectTrigger className="w-[100px]">
