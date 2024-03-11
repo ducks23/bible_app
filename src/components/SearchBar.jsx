@@ -24,7 +24,7 @@ export default function SearchBar() {
     e.preventDefault();
     setSpinner(true);
     setData([]);
-    fetch("api/aws", {
+    fetch("/api/aws", {
       method: "POST",
       headers: {
         Accept: "application/json",
