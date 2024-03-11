@@ -80,7 +80,9 @@ export default function Explore({ chapter_id, chapter_number, verse_number }) {
             <SelectContent>
               <SelectGroup>
                 {booksOfTheBible.map((item, index) => (
-                  <SelectItem value={item.id}>{item.name}</SelectItem>
+                  <SelectItem key={index} value={item.id}>
+                    {item.name}
+                  </SelectItem>
                 ))}
               </SelectGroup>
             </SelectContent>
