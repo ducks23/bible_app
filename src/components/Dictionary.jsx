@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import SearchResults from "@/components/SearchResults";
 import { ClipLoader } from "react-spinners";
 export default function Dictionary() {
+  const url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}\?key\=6f9b85d5-55eb-4cf2-8d3b-ed75d5d080a6`;
+  fetch(url);
   const [formData, setFormData] = useState({
     // Initialize formData object with empty values for input fields
     text: "",
