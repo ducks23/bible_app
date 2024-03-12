@@ -15,6 +15,7 @@ export default async function handler(req, res) {
       .then((response) => response.json())
       .then((data) => {
         console.log("here ", data);
+        console.log(typeof data);
 
         res.status(200).json({ response: JSON.parse(data).shortdef });
       })
@@ -22,6 +23,4 @@ export default async function handler(req, res) {
         console.error("Error sending payload:", error);
       });
   }
-
-  res.status(200).json({ response: "hello" });
 }
