@@ -15,9 +15,8 @@ export default async function handler(req, res) {
       .then((response) => response.json())
       .then((data) => {
         console.log("here ", data);
-        setSpinner(false);
-        setData(JSON.parse(data).shortdef);
-        return data;
+
+        res.status(200).json({ response: JSON.parse(data).shortdef });
       })
       .catch((error) => {
         console.error("Error sending payload:", error);
