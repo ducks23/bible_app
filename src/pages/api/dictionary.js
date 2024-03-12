@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         console.log("here ", data);
         console.log(typeof data);
 
-        res.status(200).json({ response: JSON.parse(data).shortdef });
+        res.status(200).json({ response: data });
       })
       .catch((error) => {
         console.error("Error sending payload:", error);
