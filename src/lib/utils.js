@@ -28,7 +28,7 @@ const invoke = async (payload) => {
     const { Payload, LogResult } = await client.send(command);
     const result = Buffer.from(Payload).toString();
     const logs = Buffer.from(LogResult, "base64").toString();
-    // console.log(result);
+    console.log(result);
     return result;
   } catch (error) {
     console.log(error);
