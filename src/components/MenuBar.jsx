@@ -26,6 +26,9 @@ export function MenubarDemo() {
           </div>
         </Link>
         <div>
+          <Link href={"/about"}>Dictionary</Link>
+        </div>
+        <div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">

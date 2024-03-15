@@ -2,8 +2,56 @@
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { toast } from "./ui/use-toast";
 import SearchResults from "@/components/SearchResults";
 import { ClipLoader } from "react-spinners";
+import { getWord } from "@/lib/actions";
+
+function Definitions({ data }) {
+  console.log("inside def", data);
+  return (
+    <div>
+      {" "}
+      <ul>
+        {data.map((item, index) => (
+          <li>
+            <div className="p-1">{"- " + item.definition}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Meaning({ data }) {
+  console.log("inside meanign", data);
+  return (
+    <div>
+      {" "}
+      {data.map((item, index) => (
+        <div className="p-3">
+          <div className="font-bold"> {item.partOfSpeech}</div>
+
+          <Definitions data={item.definitions} />
+        </div>
+      ))}
+    </div>
+  );
+}
+function Word({ data }) {
+  console.log("inside word", data);
+  return (
+    <div>
+      {data.map((item, index) => (
+        <div>
+          <div className="text-2xl">{item.word}</div>
+          <Meaning data={item.meanings} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Dictionary() {
   const [formData, setFormData] = useState({
     // Initialize formData object with empty values for input fields
@@ -23,25 +71,24 @@ export default function Dictionary() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSpinner(true);
-    setData([]);
-    fetch(`https://cozybible.com/api/dictionary `, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
+    console.log(formData.text);
+    const res = getWord(formData.text)
       .then((data) => {
-        console.log("here ", data);
-        setSpinner(false);
-        setData(JSON.parse(data).shortdef);
-        return data;
+        console.log("data", data);
+        setData(data);
+        console.log("data", data[0].meanings[0].definitions[0].definition);
       })
       .catch((error) => {
-        console.error("Error sending payload:", error);
+        toast({
+          title: "Error",
+          description: "Word Not Found",
+        });
+        setData([]);
+        console.log(error);
       });
+    console.log("response ", res);
+
+    setSpinner(false);
   };
 
   return (
@@ -54,7 +101,7 @@ export default function Dictionary() {
             name="text"
             value={formData.text}
             onChange={handleInputChange}
-            placeholder="Ask"
+            placeholder="Search Dictionary"
           />
         </div>
         <div className="p-2">
@@ -71,7 +118,9 @@ export default function Dictionary() {
       ) : (
         <p></p>
       )}
-      <SearchResults data={data} />
+      <div className=" p-10 text-sm">
+        <Word data={data}></Word>
+      </div>
 
       <div className="pl-2"></div>
     </div>
