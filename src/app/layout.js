@@ -1,5 +1,4 @@
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
 import { MenubarDemo } from "@/components/MenuBar";
 
 import { Inter as FontSans } from "next/font/google";
@@ -14,7 +13,7 @@ const fontSans = FontSans({
 
 export default function RootLayout({ children }) {
   return (
-    <html>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -30,7 +29,6 @@ export default function RootLayout({ children }) {
               disableTransitionOnChange
             >
               <MenubarDemo />
-              {/* <LeftBar /> */}
               {children} <Toaster />
             </ThemeProvider>
           </div>

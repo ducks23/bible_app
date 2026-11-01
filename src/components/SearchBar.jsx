@@ -11,6 +11,7 @@ export default function SearchBar() {
   });
   const [data, setData] = useState([]);
   const [spinner, setSpinner] = useState(false);
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     // Update the formData object with user input
@@ -24,25 +25,20 @@ export default function SearchBar() {
     e.preventDefault();
     setSpinner(true);
     setData([]);
-    fetch("/api/aws", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ search_term: formData.text }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("here ", data);
-        setSpinner(false);
-        setData(JSON.parse(data.response).data);
-        return data;
+    setError("");
+    fetch(`/api/search?q=${encodeURIComponent(formData.text)}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Search returned ${response.status}`);
+        }
+        return response.json();
       })
+      .then((body) => setData(body.results))
       .catch((error) => {
-        console.error("Error sending payload:", error);
-      });
+        console.error("Search failed:", error);
+        setError("Search is unavailable right now.");
+      })
+      .finally(() => setSpinner(false));
   };
   // add hover effect from  https://ui.aceternity.com/components/card-hover-effect
   return (
@@ -72,6 +68,7 @@ export default function SearchBar() {
       ) : (
         <p></p>
       )}
+      {error && <p className="mx-auto pt-4 text-sm">{error}</p>}
       <SearchResults data={data} />
 
       <div className="pl-2"></div>
