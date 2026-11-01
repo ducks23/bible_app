@@ -1,0 +1,39 @@
+# Builds the image on every push to main and pushes it to ghcr.io. Nothing here
+# touches a cluster: Flux in github.com/ducks23/homelab-infra sees the new tag
+# and rolls it out to dev (apps/dev/image-policies.yaml there).
+name: image
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/ducks23/bible-app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      # Same tag format as `make k8s-push`, so Flux treats both alike.
+      - id: tag
+        run: echo "timestamp=$(date -u +%Y%m%d%H%M%S)" >> "$GITHUB_OUTPUT"
+      # The k3s nodes are amd64.
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:${{ steps.tag.outputs.timestamp }}
+            ${{ env.IMAGE }}:sha-${{ github.sha }}

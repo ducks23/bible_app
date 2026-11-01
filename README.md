@@ -17,4 +17,5 @@ npm run dev
 Open http://localhost:3000. `BIBLE_TRANSLATION` picks the translation (`kjv` by default). Claude reranks search
 results when `ANTHROPIC_API_KEY` is set on bible-api; without it, search still works.
 
-`Dockerfile` builds a standalone production image.
+Pushing to `main` builds an image and pushes it to ghcr.io. Flux then rolls it out to the dev cluster at
+https://bible-app.dev.naboo.party. The manifests are in `homelab-infra`, under `apps/base/bible-app`.
