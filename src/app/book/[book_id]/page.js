@@ -1,9 +1,10 @@
 import { BiblePage } from "@/components/Book";
 import SearchBar from "@/components/SearchBar";
-import { fetchBibleData } from "@/utils/api";
+import { getBook } from "@/utils/api";
 
-export default async function Page({ params: { book_id } }) {
-  const data = await fetchBibleData("book", book_id);
+export default async function Page({ params }) {
+  const { book_id } = await params;
+  const data = await getBook(book_id);
 
   return (
     <div>

@@ -1,17 +1,18 @@
-import React from "react";
 import { BiblePage } from "@/components/Book";
-
-import { fetchBibleData } from "@/utils/api";
+import { getVerse } from "@/utils/api";
 import SearchBar from "@/components/SearchBar";
 
+// Rendered per request so building the image does not need a running API.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
-  const bible_name = "john";
-  const data = await fetchBibleData("verse", bible_name, 15, 17);
+  const book = "john";
+  const data = await getVerse(book, 15, 17);
   return (
     <div className="">
       <SearchBar />
       <BiblePage
-        chapter_id={bible_name}
+        chapter_id={book}
         chapter_number={15}
         verse_number={17}
         data={data}
